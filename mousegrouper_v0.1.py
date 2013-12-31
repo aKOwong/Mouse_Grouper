@@ -30,11 +30,11 @@ import time
 
 datafile = 'datafilename.csv'
 bodyweightfile = './mousedatabw.csv'
-glcfile = './mousedataglc.csv'
+glcfile = './smallglc.csv'
 
 # read in files
 bw_df = pandas.read_csv(bodyweightfile, index_col = 0)
-glc_df = pandas.read_csv(glcfile, index_col = 0)
+glc_df = pandas.read_csv(glcfile)
 mouse_IDs = bw_df.columns.values
 
 # parameters
@@ -65,16 +65,16 @@ def iterator(df, n_iter): #TODO currently not getting right pvals
             p_val_box_top = current_p_val_box # doing this is okay cuz current box gets reassigned above
             stat_counter += 1
             top_mouse_numbers = mouse_numbers[:]
-            #print(stat_counter)
-            #print(p_val_box_top)
-            #print(mouse_numbers, "current")
-            #print(top_mouse_numbers, "top")
+            print(stat_counter)
+            print(p_val_box_top)
+            print(mouse_numbers, "current")
+            print(top_mouse_numbers, "top")
         else:
             stat_counter += 1
-            #print(stat_counter)
-            #print(p_val_box_top)
-            #print(mouse_numbers, "current")
-            #print(top_mouse_numbers, "top")
+            print(stat_counter)
+            print(p_val_box_top)
+            print(mouse_numbers, "current")
+            print(top_mouse_numbers, "top")
     print("\n\n")
     print(top_mouse_numbers, "top")
     print(p_val_box_top)
@@ -135,11 +135,6 @@ tend = time.time()
 print("Time Elapsed tas %g second" % (tend - tstart))
 
 tstart = time.time()
-iterator(bw_df,10000000)
-tend = time.time()
-print("Time Elapsed tas %g second" % (tend - tstart))
-
-tstart = time.time()
-iterator(glc_df, 10000000)
+iterator(100)
 tend = time.time()
 print("Time Elapsed tas %g second" % (tend - tstart))
